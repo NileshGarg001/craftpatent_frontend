@@ -119,7 +119,7 @@ export default function HomePage() {
           {processingState.status === 'idle' && !assessment && (
             <PatentInput 
               onSubmit={handlePatentSubmit} 
-              isLoading={processingState.status === 'processing'} 
+              isLoading={false} 
             />
           )}
 
