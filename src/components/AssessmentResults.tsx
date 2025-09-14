@@ -10,20 +10,26 @@ interface AssessmentResultsProps {
 
 export function AssessmentResults({ assessment }: AssessmentResultsProps) {
   const getStatusIcon = (status: string) => {
-    if (status.toLowerCase().includes('rejected')) {
+    if (!status) return <AlertTriangle className="h-6 w-6 text-gray-500" />;
+    
+    const statusLower = status.toLowerCase();
+    if (statusLower.includes('rejected')) {
       return <XCircle className="h-6 w-6 text-red-500" />;
     }
-    if (status.toLowerCase().includes('approved')) {
+    if (statusLower.includes('approved')) {
       return <CheckCircle className="h-6 w-6 text-green-500" />;
     }
     return <AlertTriangle className="h-6 w-6 text-yellow-500" />;
   };
 
   const getStatusColor = (status: string) => {
-    if (status.toLowerCase().includes('rejected')) {
+    if (!status) return 'bg-gray-50 border-gray-200 text-gray-800';
+    
+    const statusLower = status.toLowerCase();
+    if (statusLower.includes('rejected')) {
       return 'bg-red-50 border-red-200 text-red-800';
     }
-    if (status.toLowerCase().includes('approved')) {
+    if (statusLower.includes('approved')) {
       return 'bg-green-50 border-green-200 text-green-800';
     }
     return 'bg-yellow-50 border-yellow-200 text-yellow-800';
